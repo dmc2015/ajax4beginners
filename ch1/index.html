@@ -12,35 +12,38 @@
   <h1>Where do bees go to get married?</h1>
 
 <form>
-  <input type="submit" value="Get Answer" onclick="fetchJoke('joke.txt', 'DivTarget')">
+  <input type="button" value="Get Answer" onclick="fetchJoke('joke.txt', 'DivTarget')">
 </form>
 
-  <div id="DivTarget"></div>
+  <div id="DivTarget">testlkjklj</div>
+
+
+  <script type="text/javascript">
+  var Request = false;
+  if(window.XMLHttpRequest){
+    Request = new XMLHttpRequest();
+  }else if(window.ActiveXObject){
+    Request = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  function fetchJoke(url, elementID){
+    if(Request){
+      var RequestObj = document.getElementById(elementID);
+      Request.open("GET", url);
+      Request.onreadystatechange = function() {
+        if (Request.readyState == 4&& Request.status == 200){
+          RequestObj.innerHTML = Request.responseText;
+
+        }
+
+      }
+      Request.send(null);
+    }
+  }
+  </script>
 </body>
 
 
-<script language="javascript" type="type/javascript">
-var Request = false;
-if(window.XMLHttpRequest){
-  Request = new XMLHttpRequest();
-}else if(window.ActiveXObject){
-  Request = new ActiveXObject("Microsoft.XMLHTTP");
-}
 
-function fetchJoke(url, elementID){
-  if(Request){
-    var RequestObj = document.getElementById(elementID);
-    Request.open("GET", url);
-    Request.onreadystatechange = function() {
-      if (Required.readyState == 4 && Request.status == 200){
-        RequestObj.innerHTML = Request.responseText;
-
-      }
-
-    }
-    Request.send(null);
-  }
-}
-</script>
 
 </html>
