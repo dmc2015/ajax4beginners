@@ -3,6 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>ch 1, joke of the day</title>
+
+
+  <script language="javascript" type="type/javascript">
+  var Request = false;
+  if(window.XMLHttpRequest){
+    Request = new XMLHttpRequest();
+  }else if(window.ActiveXObject){
+    Request = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  function fetchJoke(url, elementID){
+    if(Request){
+      var RequestObj = document.getElementById(elementID);
+      Request.open("GET", url);
+      Request.onreadystatechange = function() {
+        if (Required.readyState == 4 && Request.status == 200){
+          RequestObj.innerHTML = Request.responseText;
+
+        }
+
+      }
+      Request.send(null);
+    }
+  }
+  </script>
 </head>
 
 <body>
